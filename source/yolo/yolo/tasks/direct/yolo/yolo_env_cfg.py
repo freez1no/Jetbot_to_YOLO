@@ -14,7 +14,7 @@ class yoloEnvCfg(DirectRLEnvCfg):
 
     sim: SimulationCfg = SimulationCfg(dt=1 / 120, render_interval=2)
     scene: InteractiveSceneCfg = InteractiveSceneCfg(
-        num_envs=512, #한번에 생성 될 훈련 에이전트 수
+        num_envs=32, #한번에 생성 될 훈련 에이전트 수
         env_spacing=4.0,
         replicate_physics=True,
     )
@@ -37,7 +37,7 @@ class yoloEnvCfg(DirectRLEnvCfg):
     camera_cfg: CameraCfg = CameraCfg(
         prim_path="/World/envs/env_.*/Robot/camera_sensor",
         update_period=0.02,
-        height=240,
+        height=224,
         width=320,
         data_types=["rgb"],
         spawn=sim_utils.PinholeCameraCfg(

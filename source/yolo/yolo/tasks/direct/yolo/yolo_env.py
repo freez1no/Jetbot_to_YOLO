@@ -38,21 +38,39 @@ class yoloEnv(DirectRLEnv):
         light_cfg.func("/World/Light", light_cfg)
 
     def _get_observations(self) -> dict:
+        # 1. 카메라 이미지 가져오기 [B, H, W, 4] (RGBA, uint8)
         image_data_rgba = self.scene.sensors["camera"].data.output["rgb"]
+
+        # 2. 이미지 전처리 [B, H, W, 3] (BHWC, uint8)
         images_rgb_nhwc = image_data_rgba[..., :3]
+
+        # 3. 이미지 포맷 변환 및 정규화
+        #    (BHWC -> BCHW)
+        images_rgb_bchw_uint8 = images_rgb_nhwc.permute(0, 3, 1, 2)
+
+        #    (수정) uint8 (0-255) -> float32 (0.0-1.0)
+        #    YOLO 모델은 0.0~1.0 범위의 float 텐서를 입력으로 받습니다.
+        images_rgb_bchw_float = images_rgb_bchw_uint8.float() / 255.0
+        # --- (수정 끝) ---
+
+        # 4. YOLO V11 추론 (Inference)
+        #    (입력을 float 텐서로 변경)
         results = self.yolo_model(
-            images_rgb_nhwc, 
-            classes=[32], # sports ball
+            images_rgb_bchw_float, # 👈 수정됨
+            classes=[32],         # sports ball
             verbose=False, 
             device=self.device
         )
+
+        # 5. 결과 후처리 (변경 없음)
         obs_tensor = torch.zeros((self.num_envs, 4), device=self.device)
         for i, res in enumerate(results):
             if res.boxes.shape[0] > 0:
                 obs_tensor[i] = res.boxes.xywhn[0]
+
+        # 6. 결과 저장 및 반환 (변경 없음)
         self.bbox_obs = obs_tensor
         return {"policy": self.bbox_obs}
-
     def _get_rewards(self) -> torch.Tensor:
         x_norm, _, w_norm, h_norm = torch.split(self.bbox_obs, 1, dim=1)
         x_norm = x_norm.squeeze()
