@@ -25,12 +25,12 @@ class yoloEnvCfg(DirectRLEnvCfg):
     target_cfg: RigidObjectCfg = RigidObjectCfg(
         prim_path="/World/envs/env_.*/Target", # 타겟이 생성될 경로
         spawn=sim_utils.SphereCfg(
-            radius=0.25, # 반지름 25cm
+            radius=0.05, # 타겟 반지름 cm
             rigid_props=sim_utils.RigidBodyPropertiesCfg(
                 kinematic_enabled=True
             ),
             visual_material=sim_utils.PreviewSurfaceCfg(
-                diffuse_color=(1.0, 0.0, 0.0) # RGB
+                diffuse_color=(1.0, 0.0, 0.0) # 타겟 색상 (빨간색)
             ),
         ),
     )
@@ -56,5 +56,5 @@ class yoloEnvCfg(DirectRLEnvCfg):
     dof_names: list[str] = ["left_wheel_joint", "right_wheel_joint"]
     
     # 에피소드 설정
-    decimation: int = 2
-    episode_length_s: float = 10.0
+    decimation: int = 2 # 액션 적용 주기 (시뮬레이션 스텝 수)
+    episode_length_s: float = 10.0 # 에피소드 길이 (초)
