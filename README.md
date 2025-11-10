@@ -8,11 +8,11 @@
 강화학습 에이전트는 이 YOLO v11의 탐지 결과를 Reward 및 State 정보로 활용하여, 탐지된 객체에게 안전하고 효율적으로 접근하는(적당히 가까이 다가가는) 최적의 주행 policy를 학습한다.
 
 ### 목표
-1. Isaac Lab Code로 Jetbot, Target 생성
-2. Jetbot 카메라 인식 확인, RL 환경에서, 여러대의 Jetbot 및 Camera 인식 확인
-3. Isaac Lab 내 Jetbot의 카메라 센서로부터 이미지 데이터를 실시간으로 수집
-4. 수집된 비전 데이터를 YOLO v11 모델이 인식하도록 변환
-5. Isaac Lab RL 테스트
+1. Isaac Lab Code로 Jetbot, Target 생성 ✓
+2. Jetbot 카메라 인식 확인, RL 환경에서, 여러대의 Jetbot 및 Camera 인식 확인 ✓
+3. Isaac Lab 내 Jetbot의 카메라 센서로부터 이미지 데이터를 실시간으로 수집 ✓
+4. 수집된 비전 데이터를 YOLO v11 모델이 인식하도록 변환 ✓
+5. Isaac Lab RL 테스트 (working on it)
 6. 원하는 객체(사람, 사물 등)의 바운딩 박스 정보를 획득, 바운딩 박스 실시간 모니터링
 7. 객체 탐지 정보를 기반으로, 로봇이 목표물에 성공적으로 접근했을 때 보상을 제공하는 강화학습 환경 설계
 8. 최종 Isaac Lab RL, 모델 생성
