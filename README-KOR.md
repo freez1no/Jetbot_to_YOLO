@@ -1,5 +1,6 @@
 <img width="1051" height="527" alt="image" src="https://github.com/user-attachments/assets/3aa88360-2756-4d5d-876e-5177cec76a96" />
 <p dir="auto"><a href="https://github.com/freez1no/Omni-Seeker/blob/master/README.md" rel="nofollow">ENG</a><br></p>
+
 # Nvidia Omniverse Isaac Sim & Lab - Jetbot의 YOLO 모델을 이용한 객체 인식 강화학습 주행
 이 프로젝트는 **NVIDIA Isaac Lab** 시뮬레이션 환경에서 **Jetbot** 로봇이 자율적으로 객체를 탐색하고 접근하도록 훈련하는 것을 목표로 한다.
 
