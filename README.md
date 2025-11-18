@@ -21,7 +21,7 @@ The reinforcement learning agent utilizes the object recognition results of this
 9. Apply and test models to real Jetbot
 
 ###  Tech Stack
-enviroments : NVIDIA Isaac Lab
-Object recognition: YOLO v11
-Algorithm: RL Games, skrl, PPO
-Data Pipeline: Isaac Sim Camera Sensor
+- enviroments : NVIDIA Isaac Lab
+- Object recognition: YOLO v11
+- Algorithm: RL Games, skrl, PPO
+- Data Pipeline: Isaac Sim Camera Sensor
