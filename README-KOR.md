@@ -25,3 +25,10 @@
 - 객체인식 : YOLO v11
 - 알고리즘 : RL Games, skrl, PPO
 - 데이터 파이프라인 : Isaac Sim Camera Sensor
+
+## 설치 및 실행 방법
+### 필요 라이브러리 설치
+> 기본적으로, Isaac Sim 및 Isaac Lab이 설치되어있음을 가정합니다.
+```python
+pip install ultralytics opencv-python
+```
